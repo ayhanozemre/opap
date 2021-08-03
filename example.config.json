@@ -1,0 +1,22 @@
+{
+  "base_dir": "/etc/krakend/partials/",
+  "file_prefix": "pet-store",
+  "prefix_separator": "-",
+  "services": [
+    {
+      "name": "store",
+      "swagger_url": "https://petstore.swagger.io/v2/swagger.json",
+      "internal_address": "http://pet-store:8082",
+      "output_encoding": "no-op",
+      "backend_encoding": "no-op",
+      "excluded_endpoints": [],
+      "cross_mapping": [
+        {"from": "/<service_name>/swagger", "to": "/swagger", "method": "GET", "internal_address":  "http://store:8082", "headers_to_pass": []},
+        {"from": "/<service_name>/swagger-ui.css", "to": "/swagger/swagger-ui.css", "method": "GET", "internal_address":  "http://store:8082", "headers_to_pass": []},
+        {"from": "/<service_name>/swagger-ui-standalone-preset.js", "to": "/swagger/swagger-ui-standalone-preset.js", "method": "GET", "internal_address":  "http://store:8082", "headers_to_pass": []},
+        {"from": "/<service_name>/swagger-ui-bundle.js", "to": "/swagger/swagger-ui-bundle.js", "method": "GET", "internal_address":  "http://store:8082", "headers_to_pass": []},
+        {"from": "/swagger/<service_name>.swagger.json", "to": "/swagger/dashboard.swagger.json", "method": "GET", "internal_address":  "http://store:8082", "headers_to_pass": []}
+      ]
+    }
+  ]
+}
