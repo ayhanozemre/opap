@@ -12,23 +12,6 @@ type Scenario struct {
 	ErrMessage string
 }
 
-func TestLoadConfig(t *testing.T) {
-	config, err := loadConfig("conf.json")
-	if err == nil {
-		t.Fatalf(err.Error())
-	}
-
-	config, err = loadConfig("config.json")
-	if err != nil {
-		t.Fatalf(err.Error())
-	}
-
-	// check success config
-	if len(config.Services) == 0 {
-		t.Fatalf(err.Error())
-	}
-}
-
 func TestInStringSlice(t *testing.T) {
 	type Scenario struct {
 		Name  string
@@ -69,25 +52,6 @@ func TestGetFilePath(t *testing.T) {
 	}
 
 }
-
-/*
-func TestDoRequest(t *testing.T) {
-	var response interface{}
-	err := doRequest("http://test.url", &response)
-	if err == nil {
-		t.Fatalf(err.Error())
-	}
-
-	err = doRequest("https://petstore.swagger.io/v2/swagger.json", &response)
-	if err != nil {
-		t.Fatalf(err.Error())
-	}
-
-	if response == nil {
-		t.Fatalf("Couldn't set response")
-	}
-}
-*/
 
 func TestTransformSwaggerResponse(t *testing.T) {
 	configPayload := []byte(`{
